@@ -1,5 +1,5 @@
 diff -Nru awka-0.7.0/Makefile.in awka-0.7.0.new/Makefile.in
---- awka-0.7.0/Makefile.in	Wed Aug  9 05:56:37 2000
+--- awka-0.7.0/Makefile.in	Fri Aug 11 15:49:46 2000
 +++ awka-0.7.0.new/Makefile.in	Fri Aug 11 15:22:02 2000
 @@ -20,13 +20,11 @@
  prefix = @prefix@
@@ -47,9 +47,15 @@ diff -Nru awka-0.7.0/Makefile.in awka-0.7.0.new/Makefile.in
  clean:
  	cd awka; $(MAKE) clean
 diff -Nru awka-0.7.0/awka/Makefile.in awka-0.7.0.new/awka/Makefile.in
---- awka-0.7.0/awka/Makefile.in	Wed Aug  9 00:10:45 2000
-+++ awka-0.7.0.new/awka/Makefile.in	Fri Aug 11 15:18:47 2000
-@@ -19,12 +19,9 @@
+--- awka-0.7.0/awka/Makefile.in	Fri Aug 11 15:49:46 2000
++++ awka-0.7.0.new/awka/Makefile.in	Fri Aug 11 15:50:34 2000
+@@ -14,17 +14,15 @@
+ 
+ YACC = @YACC@ 
+ AWK = @AWK@
++LDFLAGS = @LDFLAGS@
+ 
+ # where to put awka
  prefix = @prefix@
  exec_prefix = @exec_prefix@
  
@@ -65,7 +71,16 @@ diff -Nru awka-0.7.0/awka/Makefile.in awka-0.7.0.new/awka/Makefile.in
  #######################################
  
  MAKEFILEIN = Makefile.in
-@@ -51,8 +48,8 @@
+@@ -40,7 +38,7 @@
+ 	cd ..; /bin/sh ./config.status
+ 
+ awka : $(OBJS)
+-	$(CC) $(CFLAGS) $(OBJS) -o awka
++	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) -o awka
+ 
+ parse.c  : parse.y
+ 	@echo  expect 6 shift/reduce conflicts
+@@ -51,8 +49,8 @@
  	else mv y.tab.h parse.h ; fi
  
  install :  awka
@@ -77,7 +92,7 @@ diff -Nru awka-0.7.0/awka/Makefile.in awka-0.7.0.new/awka/Makefile.in
  clean :
  	rm -f *.o core awka awka$(EXE)
 diff -Nru awka-0.7.0/dfa/Makefile.in awka-0.7.0.new/dfa/Makefile.in
---- awka-0.7.0/dfa/Makefile.in	Wed Aug  9 00:10:46 2000
+--- awka-0.7.0/dfa/Makefile.in	Fri Aug 11 15:49:46 2000
 +++ awka-0.7.0.new/dfa/Makefile.in	Fri Aug 11 15:18:34 2000
 @@ -18,12 +18,9 @@
  prefix = @prefix@
@@ -113,7 +128,7 @@ diff -Nru awka-0.7.0/dfa/Makefile.in awka-0.7.0.new/dfa/Makefile.in
  clean :
  	rm -f *.o core libdfa.a libdfa.so 
 diff -Nru awka-0.7.0/lib/Makefile.in awka-0.7.0.new/lib/Makefile.in
---- awka-0.7.0/lib/Makefile.in	Wed Aug  9 00:10:45 2000
+--- awka-0.7.0/lib/Makefile.in	Fri Aug 11 15:49:46 2000
 +++ awka-0.7.0.new/lib/Makefile.in	Fri Aug 11 15:18:19 2000
 @@ -18,12 +18,9 @@
  prefix = @prefix@
