@@ -1,15 +1,15 @@
 Summary:	comprises a translator of the AWK programming language to ANSI-C
 Name:		awka
-Version:	0.7.0
-Release:	2
+Version:	0.7.4
+Release:	1
 License:	GPL
 Group:		Applications/Text
 Group(de):	Applikationen/Text
 Group(fr):	Utilitaires/Texte
 Group(pl):	Aplikacje/Tekst
-Source0:	http://members.linuxstart.com/~awka/%{name}-%{version}.tar.gz
+Source0:	http://awka.sourceforge.net/%{name}-%{version}.tar.gz
 PAtch0:		%{name}-DESTDIR.patch
-URL:		http://members.linuxstart.com/~awka/
+URL:		http://awka.sourceforge.net
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
