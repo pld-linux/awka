@@ -8,8 +8,8 @@ Group(de):	Applikationen/Text
 Group(fr):	Utilitaires/Texte
 Group(pl):	Aplikacje/Tekst
 Source0:	http://awka.sourceforge.net/%{name}-%{version}.tar.gz
-PAtch0:		%{name}-DESTDIR.patch
-URL:		http://awka.sourceforge.net
+Patch0:		%{name}-DESTDIR.patch
+URL:		http://awka.sourceforge.net/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
