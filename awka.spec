@@ -18,7 +18,7 @@ and a library against which translated programs may be linked.
 %description -l pl
 Awka sk³ada siê z programu t³umacz±cego kod w jêzyku AWK na kod w
 jêzyku C i biblioteki z któr± przet³umaczone programy mog± byæ
-zlinkowane.
+skonsolidowane.
 
 %prep
 %setup -q
