@@ -6,6 +6,7 @@ Release:	3
 License:	GPL
 Group:		Applications/Text
 Source0:	http://awka.sourceforge.net/%{name}-%{version}.tar.gz
+# Source0-md5:	80da40555d79d78cf96d8e3a03e1b94f
 Patch0:		%{name}-DESTDIR.patch
 URL:		http://awka.sourceforge.net/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
