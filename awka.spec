@@ -31,7 +31,7 @@ Requires:	%{name} = %{version}-%{release}
 Static awka library.
 
 %description static -l pl
-Statyczna bibliotka awka.
+Statyczna biblioteka awka.
 
 %prep
 %setup -q
