@@ -2,7 +2,7 @@ Summary:	Translator of the AWK programming language to ANSI-C
 Summary(pl):	Konwerter programów w jêzyku AWK na programy w jêzyku C
 Name:		awka
 Version:	0.7.4
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/Text
 Source0:	http://awka.sourceforge.net/%{name}-%{version}.tar.gz
