@@ -1,7 +1,7 @@
 Summary:	comprises a translator of the AWK programming language to ANSI-C
 Name:		awka
 Version:	0.7.0
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/Text
 Group(de):	Applikationen/Text
@@ -28,8 +28,6 @@ and a library against which translated programs may be linked.
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
-
-gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man*/*
 
 %clean
 rm -rf $RPM_BUILD_ROOT
