@@ -1,0 +1,150 @@
+diff -Nru awka-0.7.0/Makefile.in awka-0.7.0.new/Makefile.in
+--- awka-0.7.0/Makefile.in	Wed Aug  9 05:56:37 2000
++++ awka-0.7.0.new/Makefile.in	Fri Aug 11 15:22:02 2000
+@@ -20,13 +20,11 @@
+ prefix = @prefix@
+ exec_prefix = @exec_prefix@
+ 
+-BINDIR = @bindir@
+-LIBDIR = @libdir@
+-INCDIR = @includedir@
++bindir = @bindir@
++libdir = @libdir@
++includedir = @includedir@
+ # where to put the man pages
+-MANEXT = @MANEXT@
+-MANSRCDIR = @mandir@
+-MANDIR = $(MANSRCDIR)/man$(MANEXT)
++mandir = @mandir@
+ BUILDLIB = libawka.@BUILDLIB@
+ #######################################
+ 
+@@ -46,19 +44,17 @@
+ libdfa: 
+ 	cd dfa; $(MAKE)
+ 
+-AWKAMAN = $(MANDIR)/awka.$(MANEXT)
+ install:  awka_exe libawka
+-	if [ ! -d $(LIBDIR) ]; then mkdir -p $(LIBDIR); fi
+-	if [ ! -d $(INCDIR) ]; then mkdir -p $(INCDIR); fi
+-	if [ ! -d $(BINDIR) ]; then mkdir -p $(BINDIR); fi
+-	if [ ! -d $(MANDIR) ]; then mkdir -p $(MANDIR); fi
++	mkdir -p $(DESTDIR)$(libdir)
++	mkdir -p $(DESTDIR)$(includedir)
++	mkdir -p $(DESTDIR)$(bindir)
++	mkdir -p $(DESTDIR)$(mandir)/man1 $(DESTDIR)$(mandir)/man5
+ 	cd awka; $(MAKE) install
+ 	cd lib; $(MAKE) install
+ 	cd dfa; $(MAKE) install
+-	cp  doc/awka.1  $(AWKAMAN)
+-	cp  doc/awka-elm.5  $(MANSRCDIR)/man5
+-	cp  doc/awka-elmref.5  $(MANSRCDIR)/man5
+-	chmod  0644  $(AWKAMAN)
++	cp  doc/awka.1 $(DESTDIR)$(mandir)/man1
++	cp  doc/awka-elm.5 $(DESTDIR)$(mandir)/man5
++	cp  doc/awka-elmref.5 $(DESTDIR)$(mandir)/man1
+ 
+ clean:
+ 	cd awka; $(MAKE) clean
+diff -Nru awka-0.7.0/awka/Makefile.in awka-0.7.0.new/awka/Makefile.in
+--- awka-0.7.0/awka/Makefile.in	Wed Aug  9 00:10:45 2000
++++ awka-0.7.0.new/awka/Makefile.in	Fri Aug 11 15:18:47 2000
+@@ -19,12 +19,9 @@
+ prefix = @prefix@
+ exec_prefix = @exec_prefix@
+ 
+-BINDIR = @bindir@
+-LIBDIR = @libdir@
+-INCDIR = @includedir@
+-# where to put the man pages
+-MANDIR = @mandir@
+-MANEXT = @MANEXT@
++bindir = @bindir@
++libdir = @libdir@
++includedir = @includedir@
+ #######################################
+ 
+ MAKEFILEIN = Makefile.in
+@@ -51,8 +48,8 @@
+ 	else mv y.tab.h parse.h ; fi
+ 
+ install :  awka
+-	cp awka$(EXE) $(BINDIR)
+-	chmod a+rx $(BINDIR)/awka$(EXE)
++	cp awka$(EXE) $(DESTDIR)$(bindir)
++	chmod a+rx $(DESTDIR)$(bindir)/awka$(EXE)
+ 
+ clean :
+ 	rm -f *.o core awka awka$(EXE)
+diff -Nru awka-0.7.0/dfa/Makefile.in awka-0.7.0.new/dfa/Makefile.in
+--- awka-0.7.0/dfa/Makefile.in	Wed Aug  9 00:10:46 2000
++++ awka-0.7.0.new/dfa/Makefile.in	Fri Aug 11 15:18:34 2000
+@@ -18,12 +18,9 @@
+ prefix = @prefix@
+ exec_prefix = @exec_prefix@
+ 
+-BINDIR = @bindir@
+-LIBDIR = @libdir@
+-INCDIR = @includedir@
+-# where to put the man pages
+-MANDIR = @mandir@
+-MANEXT = @MANEXT@
++bindir = @bindir@
++libdir = @libdir@
++includedir = @includedir@
+ BUILDLIB = libdfa.@BUILDLIB@
+ #######################################
+ 
+@@ -46,11 +43,11 @@
+ 	$(CC) -shared $(CFLAGS) $(LOBJS) -o libdfa.so
+ 
+ install :  libdfa.a
+-	cp libdfa.a $(LIBDIR)
+-	if [ -f libdfa.so ]; then cp libdfa.so $(LIBDIR); fi
+-	cp dfa.h $(INCDIR)
+-	chmod a+r $(LIBDIR)/libdfa.*
+-	chmod a+r $(INCDIR)/dfa.h
++	cp libdfa.a $(DESTDIR)$(libdir)
++	if [ -f libdfa.so ]; then cp libdfa.so $(DESTDIR)$(libdir); fi
++	cp dfa.h $(DESTDIR)$(includedir)
++	chmod a+r $(DESTDIR)$(libdir)/libdfa.*
++	chmod a+r $(DESTDIR)$(includedir)/dfa.h
+ 
+ clean :
+ 	rm -f *.o core libdfa.a libdfa.so 
+diff -Nru awka-0.7.0/lib/Makefile.in awka-0.7.0.new/lib/Makefile.in
+--- awka-0.7.0/lib/Makefile.in	Wed Aug  9 00:10:45 2000
++++ awka-0.7.0.new/lib/Makefile.in	Fri Aug 11 15:18:19 2000
+@@ -18,12 +18,9 @@
+ prefix = @prefix@
+ exec_prefix = @exec_prefix@
+ 
+-BINDIR = @bindir@
+-LIBDIR = @libdir@
+-INCDIR = @includedir@
+-# where to put the man pages
+-MANDIR = @mandir@
+-MANEXT = @MANEXT@
++bindir = @bindir@
++libdir = @libdir@
++includedir = @includedir@
+ BUILDLIB = libawka.@BUILDLIB@
+ #######################################
+ 
+@@ -56,11 +53,11 @@
+ 	$(AWK) -f ../examples/fixhdr.awk libawka.h.in >libawka.h
+ 
+ install :  libawka.a
+-	cp libawka.a $(LIBDIR)
+-	if [ -f libawka.so ]; then cp libawka.so $(LIBDIR); fi
+-	cp libawka.h $(INCDIR)
+-	chmod a+r $(LIBDIR)/libawka.*
+-	chmod a+r $(INCDIR)/libawka.h
++	cp libawka.a $(DESTDIR)$(libdir)
++	if [ -f libawka.so ]; then cp libawka.so $(DESTDIR)$(libdir); fi
++	cp libawka.h $(DESTDIR)$(includedir)
++	chmod a+r $(DESTDIR)$(libdir)/libawka.*
++	chmod a+r $(DESTDIR)$(includedir)/libawka.h
+ 
+ clean :
+ 	rm -f *.o ../regexp/*.o ../regexp/.done core libawka.a libawka.so libawka.h
