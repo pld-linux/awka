@@ -3,9 +3,10 @@ Name:		awka
 Version:	0.7.0
 Release:	1
 License:	GPL
-Group:		Utilities/Text
-Group(pl):	Narzêdzia/Tekst
+Group:		Applications/Text
+Group(de):	Applikationen/Text
 Group(fr):	Utilitaires/Texte
+Group(pl):	Aplikacje/Tekst
 Source0:	http://members.linuxstart.com/~awka/%{name}-%{version}.tar.gz
 PAtch0:		%{name}-DESTDIR.patch
 URL:		http://members.linuxstart.com/~awka/
@@ -20,7 +21,6 @@ and a library against which translated programs may be linked.
 %patch -p1
 
 %build
-LDFLAGS="-s"; export LDFLAGS
 %configure
 %{__make}
 
