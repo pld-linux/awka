@@ -5,9 +5,6 @@ Version:	0.7.4
 Release:	1
 License:	GPL
 Group:		Applications/Text
-Group(de):	Applikationen/Text
-Group(fr):	Utilitaires/Texte
-Group(pl):	Aplikacje/Tekst
 Source0:	http://awka.sourceforge.net/%{name}-%{version}.tar.gz
 Patch0:		%{name}-DESTDIR.patch
 URL:		http://awka.sourceforge.net/
