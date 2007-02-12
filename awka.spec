@@ -1,5 +1,5 @@
 Summary:	Translator of the AWK programming language to ANSI-C
-Summary(pl.UTF-8):   Konwerter programów w języku AWK na programy w języku C
+Summary(pl.UTF-8):	Konwerter programów w języku AWK na programy w języku C
 Name:		awka
 Version:	0.7.4
 Release:	4
@@ -23,7 +23,7 @@ skonsolidowane.
 
 %package static
 Summary:	Static awka library
-Summary(pl.UTF-8):   Statyczna bibliotka awka
+Summary(pl.UTF-8):	Statyczna bibliotka awka
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
