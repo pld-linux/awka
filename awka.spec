@@ -35,7 +35,7 @@ Statyczna biblioteka awka.
 
 %prep
 %setup -q
-%patch0 -p1
+%patch -P0 -p1
 
 %{__perl} -pi -e 's/^(CFLAGS.*)/$1 -fPIC/' lib/Makefile.in
 
